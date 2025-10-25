@@ -12,9 +12,6 @@
       "destination": "/index.html"
     }
   ],
-  "env": {
-    "NEXT_PUBLIC_SITE_URL": "@site-url"
-  },
   "headers": [
     {
       "source": "/(.*)",
