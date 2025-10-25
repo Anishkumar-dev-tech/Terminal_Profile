@@ -1,0 +1,123 @@
+var linkedin = "https://www.linkedin.com/in/anish-kumar-a/";
+var github = "https://github.com/anishkumarak";
+var email = 'mailto:anishkumarak8686@gmail.com';
+var phone = 'tel:+918870208686';
+
+intro = [
+    "<br>",
+    "Hey, I'm Anish Kumar A! 👋",
+    "Junior Software Developer from Coimbatore, India",
+    "Experienced in building scalable web applications, cross-platform mobile apps, and serverless backends.",
+    "Proficient in Node.js, Python, Flutter, MongoDB, and modern DevOps practices.",
+    "Passionate about solving complex problems and creating user-centric digital solutions! 🚀👨‍💻",
+    "<br>"
+]
+
+
+whoami = [
+    "<br>",
+    "Anish Kumar A",
+    "Junior Software Developer | Node.js | Flutter | Python",
+    "Location: Coimbatore, India",
+    "Email: anishkumarak8686@gmail.com | Phone: 8870208686",
+    "<br>"
+];
+
+social = [
+    "<br>",
+    'linkedin       <a href="' + linkedin + '" target="_blank">linkedin/anish-kumar-a' + "</a>",
+    'github         <a href="' + github + '" target="_blank">github/anishkumarak' + "</a>",
+    'email          <a href="' + email + '">anishkumarak8686@gmail.com' + "</a>",
+    'phone          <a href="' + phone + '">+91 8870208686' + "</a>",
+    "<br>"
+];
+
+
+skills = [
+    "<br>",
+    "<span class=\"command\">Backend Development:</span> Node.js, Express, PHP, .NET MVC",
+    "<span class=\"command\">API Integration:</span> RESTful services, Payment gateways (Razorpay), Third-party APIs",
+    "<span class=\"command\">Architecture:</span> Microservices, MVC",
+    "<span class=\"command\">Database:</span> MongoDB, SQL Server, MySQL, PostgreSQL",
+    "<span class=\"command\">Communication:</span> WebSocket, TCP, MQTT (IoT communication)",
+    "<span class=\"command\">Frontend:</span> Flutter, JavaScript, HTML, CSS, Bootstrap, jQuery, AJAX",
+    "<span class=\"command\">DevOps & Tools:</span> Docker, GitHub, GitHub Actions, SVN",
+    "<span class=\"command\">Other:</span> Version control, Agile development, Jira, Code review, Mentorship",
+    "<br>",
+    "<span class=\"command\">Learning:</span> React.js, Kubernetes, AWS Services, Redis, GitHub Actions CI/CD, Kafka",
+    "<br>"
+];
+
+experience = [
+    "<br>",
+    "<span class=\"command\">Junior Software Developer</span>",
+    "Outdid Unified Pvt Ltd, Bangalore (May 2024 - Present)",
+    "",
+    "• Developed scalable software solutions for internal and client-facing applications",
+    "• Built eCommerce platform backend using Node.js, Express, MongoDB with microservices architecture",
+    "• Implemented payment gateway integration, order management, and inventory systems",
+    "• Core backend developer for EV charging platform with OCPP 1.6J protocol integration",
+    "• Created WebSocket-based real-time communication for EV chargers and dashboards",
+    "• Developed Flutter cross-platform water purifier app with real-time service booking",
+    "• Set up Docker containerization for consistent deployment across environments",
+    "• Mentored co-developers on clean code practices and architectural patterns",
+    "• Collaborated with product, QA, and mobile teams in Agile environment",
+    "<br>"
+];
+
+education = [
+    "<br>",
+    "<span class=\"command\">Bachelor of Information Technology (B.Tech)</span>",
+    "KGISL Institute of Technology (May 2024)",
+    "",
+    "<span class=\"command\">Higher Secondary Certificate (HSC)</span>",
+    "KV Institution, Coimbatore (March 2010)",
+    "",
+    "<span class=\"command\">Secondary School Leaving Certificate (SSLC)</span>",
+    "Sree Dharmasasthra Matric Higher Secondary School, Coimbatore (March 2018)",
+    "<br>"
+];
+
+projects = [
+    "<br>",
+    "<span class=\"command\">1. eCommerce Platform (Microservices)</span>",
+    "   Backend with Node.js, Express, MongoDB | Docker containerization",
+    "   User auth, product catalog, shopping cart, order management, Razorpay integration",
+    "",
+    "<span class=\"command\">2. EVSE - EV Charging Platform</span>",
+    "   Full-stack development | OCPP 1.6J protocol integration",
+    "   WebSocket real-time communication, wallet system, Google Maps API integration",
+    "",
+    "<span class=\"command\">3. Water Purifier Mobile App</span>",
+    "   Flutter (Android & iOS) | Service booking, push notifications, WhatsApp integration",
+    "<br>"
+];
+
+help = [
+    "<br>",
+    '<span class="command">whoami</span>         Who am I?',
+    '<span class="command">intro</span>          Introduction',
+    '<span class="command">skills</span>         My technical skills',
+    '<span class="command">experience</span>     Professional experience',
+    '<span class="command">education</span>      Education background',
+    '<span class="command">projects</span>       Projects I\'ve worked on',
+    '<span class="command">social</span>         Connect with me',
+    '<span class="command">history</span>        Command history',
+    '<span class="command">clear</span>          Clear terminal',
+    '<span class="command">banner</span>         Display welcome banner',
+    '<span class="command">email</span>          Send me an email',
+    "<br>",
+];
+const banner = [
+    '<span class="index">Welcome to Anish Kumar A\'s Portfolio</span>',
+    '<span class="color2">Junior Software Developer | Node.js | Flutter | Python</span>',
+    '<span class="color2">Type</span> <span class="command">\'help\'</span><span class="color2"> to see available commands or \'intro\' to learn more about me.</span>',
+    '                                                                      ',
+    '    _   _ _____  _____ _    _   _  ___    _ __  __          _____',
+    '   /\\   | \\ | | _   _ | / ____ | |  | | | | / / |  | |  \\/  |',
+    '  /  \\  |  \\| | | | | (___ | | __ | | | \' / | |  | | \\  / |',
+    ' / /\\ \\ | . ` | | |  \\___ \\|  __  | |  < | |  | | |\\/| |',
+    '/ ____ \\| |\\  |_| |_ ____) | |  | | | . \\| |__| | |  | |',
+    '/_/    \\_\\_| \\_|_____ | _____ /| _ |  | _ | | _ |\\_\\\\____ /| _ |  | _ /'
+];
+
