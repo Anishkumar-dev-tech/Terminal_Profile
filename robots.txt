@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /private
 
-Sitemap: https://anishkumara.dev/sitemap.xml
+Sitemap: https://www.codewithanish.tech/sitemap.xml
