@@ -3,7 +3,21 @@ var github = "https://github.com/anishkumarak";
 var email = 'mailto:anishkumarak8686@gmail.com';
 var phone = 'tel:+918870208686';
 
-intro = [
+var sysinfo = [
+    "<br>",
+    "System Information",
+    "─────────────────────────────────────",
+    "<span class=\"command\">OS:</span> BlackArch Linux",
+    "<span class=\"command\">Kernel:</span> 5.15.0-arch1 x86_64",
+    "<span class=\"command\">Shell:</span> /bin/zsh",
+    "<span class=\"command\">Terminal:</span> Portfolio v1.0",
+    "<span class=\"command\">User:</span> anish@portfolio",
+    "<span class=\"command\">Status:</span> Active Developer 🎯",
+    "─────────────────────────────────────",
+    "<br>"
+];
+
+var intro = [
     "<br>",
     "Hey, I'm Anish Kumar A! 👋",
     "Junior Software Developer from Coimbatore, India",
@@ -14,7 +28,7 @@ intro = [
 ]
 
 
-whoami = [
+var whoami = [
     "<br>",
     "Anish Kumar A",
     "Junior Software Developer | Node.js | Flutter | Python",
@@ -23,7 +37,7 @@ whoami = [
     "<br>"
 ];
 
-social = [
+var social = [
     "<br>",
     'linkedin       <a href="' + linkedin + '" target="_blank">linkedin/anish-kumar-a' + "</a>",
     'github         <a href="' + github + '" target="_blank">github/anishkumarak' + "</a>",
@@ -33,7 +47,7 @@ social = [
 ];
 
 
-skills = [
+var skills = [
     "<br>",
     "<span class=\"command\">Backend Development:</span> Node.js, Express, PHP, .NET MVC",
     "<span class=\"command\">API Integration:</span> RESTful services, Payment gateways (Razorpay), Third-party APIs",
@@ -48,7 +62,7 @@ skills = [
     "<br>"
 ];
 
-experience = [
+var experience = [
     "<br>",
     "<span class=\"command\">Junior Software Developer</span>",
     "Outdid Unified Pvt Ltd, Bangalore (May 2024 - Present)",
@@ -65,7 +79,7 @@ experience = [
     "<br>"
 ];
 
-education = [
+var education = [
     "<br>",
     "<span class=\"command\">Bachelor of Information Technology (B.Tech)</span>",
     "KGISL Institute of Technology (May 2024)",
@@ -78,7 +92,7 @@ education = [
     "<br>"
 ];
 
-projects = [
+var projects = [
     "<br>",
     "<span class=\"command\">1. eCommerce Platform (Microservices)</span>",
     "   Backend with Node.js, Express, MongoDB | Docker containerization",
@@ -93,8 +107,10 @@ projects = [
     "<br>"
 ];
 
-help = [
+var help = [
     "<br>",
+    "Available Commands:",
+    "─────────────────────────────────────",
     '<span class="command">whoami</span>         Who am I?',
     '<span class="command">intro</span>          Introduction',
     '<span class="command">skills</span>         My technical skills',
@@ -102,22 +118,32 @@ help = [
     '<span class="command">education</span>      Education background',
     '<span class="command">projects</span>       Projects I\'ve worked on',
     '<span class="command">social</span>         Connect with me',
+    '<span class="command">sysinfo</span>        System information',
     '<span class="command">history</span>        Command history',
     '<span class="command">clear</span>          Clear terminal',
     '<span class="command">banner</span>         Display welcome banner',
     '<span class="command">email</span>          Send me an email',
+    '<span class="command">linkedin</span>       Open LinkedIn profile',
+    '<span class="command">github</span>         Open GitHub profile',
+    "─────────────────────────────────────",
     "<br>",
 ];
-const banner = [
+var banner = [
     '<span class="index">Welcome to Anish Kumar A\'s Portfolio</span>',
     '<span class="color2">Junior Software Developer | Node.js | Flutter | Python</span>',
     '<span class="color2">Type</span> <span class="command">\'help\'</span><span class="color2"> to see available commands or \'intro\' to learn more about me.</span>',
     '                                                                      ',
-    '    _   _ _____  _____ _    _   _  ___    _ __  __          _____',
-    '   /\\   | \\ | | _   _ | / ____ | |  | | | | / / |  | |  \\/  |',
-    '  /  \\  |  \\| | | | | (___ | | __ | | | \' / | |  | | \\  / |',
-    ' / /\\ \\ | . ` | | |  \\___ \\|  __  | |  < | |  | | |\\/| |',
-    '/ ____ \\| |\\  |_| |_ ____) | |  | | | . \\| |__| | |  | |',
-    '/_/    \\_\\_| \\_|_____ | _____ /| _ |  | _ | | _ |\\_\\\\____ /| _ |  | _ /'
+    '---------------------------------------------------------------------------------',
+    '<br>',
+    '         _       _ _____  _____ _    _   _  ___    _ __  __          _____',
+    '        /\\      | \\ | | _   _ | / ____ | |  | | | | / / |  | |  \\/  |',
+    '       /  \\     |  \\| | | | | (___ | | __ | | | \' / | |  | | \\  / |',
+    '      / /\ \\    | . ` | | |  \\___ \\|  __  | |  < | |  | | |\\/| |',
+    '     / ____ \\   | |\\  |_| |_ ____) | |  | | | . \\| |__| | |  | |',
+    '    /_/    \\_\\| \\_|_____ | _____ /| _ |  | _ | | _ |\\_\\\\____ /| _ |  | _ /',
+    '<br>',
+    '---------------------------------------------------------------------------------',
+    '<br>'
 ];
+
 
