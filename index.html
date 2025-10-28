@@ -83,18 +83,16 @@
         </div>
     </div>
     
-    <div id="command-container">
-        <div id="terminal-wrapper">
-            <div id="terminal">
+    <div id="terminal-wrapper">
+        <div id="terminal" onclick="$('texter').focus();">
+            <div id="history">
                 <a id="before"></a>
             </div>
-        </div>
-        
-        <div id="command" onclick="$('texter').focus();">
-            <textarea type="text" id="texter" onkeyup="typeIt(this, event)" onkeydown="typeIt(this, event); moveIt(this.value.length, event)" onkeypress="typeIt(this, event);" autofocus></textarea>
-            <div id="liner">
+            <div id="input-line">
+                <span class="prompt-label">anish@portfolio ~ $</span>
                 <span id="typer"></span><b class="cursor" id="cursor">█</b>
             </div>
+            <textarea type="text" id="texter" onkeyup="typeIt(this, event)" onkeydown="typeIt(this, event); moveIt(this.value.length, event)" onkeypress="typeIt(this, event);" autofocus></textarea>
             <div id="autocomplete" class="hidden"></div>
         </div>
     </div>

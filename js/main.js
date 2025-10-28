@@ -1,10 +1,10 @@
 var before = document.getElementById("before");
-var liner = document.getElementById("liner");
 var command = document.getElementById("typer");
 var textarea = document.getElementById("texter");
 var terminal = document.getElementById("terminal");
 var autocompleteBox = document.getElementById("autocomplete");
-var terminalWrapper = document.getElementById("terminal-wrapper");
+var terminalWrapper = document.getElementById("history");
+var promptLabel = '<span class="prompt-label">anish@portfolio ~ $</span>';
 
 var git = 0;
 var pw = false;
@@ -18,6 +18,14 @@ var allCommands = [
     "education", "projects", "social", "history", "email", 
     "clear", "banner", "linkedin", "github", "sysinfo"
 ];
+
+function sanitizeCommand(text) {
+    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function formatCommand(input) {
+    return promptLabel + ' <span class="command-input">' + sanitizeCommand(input) + "</span>";
+}
 
 setTimeout(function() {
     loopLines(banner, "", 80);
@@ -128,10 +136,17 @@ function enterKey(e) {
     
     if (e.keyCode == 13) {
         hideAutocomplete();
-        commands.push(currentInput);
+        var trimmedInput = currentInput.trim();
+        if (trimmedInput.length === 0) {
+            command.innerHTML = "";
+            textarea.value = "";
+            return;
+        }
+        var displayCommand = formatCommand(trimmedInput);
+        commands.push(trimmedInput);
         git = commands.length;
-        addLine(currentInput, "no-animation", 0);
-        commander(currentInput.toLowerCase());
+        addLine(displayCommand, "no-animation", 0);
+        commander(trimmedInput.toLowerCase());
         command.innerHTML = "";
         textarea.value = "";
         return;

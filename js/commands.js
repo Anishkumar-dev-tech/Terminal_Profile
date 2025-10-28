@@ -1,6 +1,6 @@
-var linkedin = "https://www.linkedin.com/in/anish-kumar-a/";
-var github = "https://github.com/anishkumarak";
-var email = 'mailto:anishkumarak8686@gmail.com';
+var linkedin = "https://www.linkedin.com/in/anishkumar-a-0a1520235";
+var github = "https://github.com/anishkumar-0502";
+var email = 'mailto:anishkumar.dev.tech@gmail.com';
 var phone = 'tel:+918870208686';
 
 var sysinfo = [
@@ -33,7 +33,7 @@ var whoami = [
     "Anish Kumar A",
     "Junior Software Developer | Node.js | Flutter | Python",
     "Location: Coimbatore, India",
-    "Email: anishkumarak8686@gmail.com | Phone: 8870208686",
+    "Email: anishkumar.dev.tech@gmail.com | Phone: 8870208686",
     "<br>"
 ];
 
@@ -41,7 +41,7 @@ var social = [
     "<br>",
     'linkedin       <a href="' + linkedin + '" target="_blank">linkedin/anish-kumar-a' + "</a>",
     'github         <a href="' + github + '" target="_blank">github/anishkumarak' + "</a>",
-    'email          <a href="' + email + '">anishkumarak8686@gmail.com' + "</a>",
+    'email          <a href="' + email + '">anishkumar.dev.tech@gmail.com' + "</a>",
     'phone          <a href="' + phone + '">+91 8870208686' + "</a>",
     "<br>"
 ];
@@ -127,23 +127,25 @@ var help = [
     '<span class="command">github</span>         Open GitHub profile',
     "─────────────────────────────────────",
     "<br>",
-];
-var banner = [
+]; var banner = [
     '<span class="index">Welcome to Anish Kumar A\'s Portfolio</span>',
     '<span class="color2">Junior Software Developer | Node.js | Flutter | Python</span>',
     '<span class="color2">Type</span> <span class="command">\'help\'</span><span class="color2"> to see available commands or \'intro\' to learn more about me.</span>',
-    '                                                                      ',
-    '---------------------------------------------------------------------------------',
+    '',
+    '---------------------------------------------------------------------------------------------------------',
     '<br>',
-    '         _       _ _____  _____ _    _   _  ___    _ __  __          _____',
-    '        /\\      | \\ | | _   _ | / ____ | |  | | | | / / |  | |  \\/  |',
-    '       /  \\     |  \\| | | | | (___ | | __ | | | \' / | |  | | \\  / |',
-    '      / /\ \\    | . ` | | |  \\___ \\|  __  | |  < | |  | | |\\/| |',
-    '     / ____ \\   | |\\  |_| |_ ____) | |  | | | . \\| |__| | |  | |',
-    '    /_/    \\_\\| \\_|_____ | _____ /| _ |  | _ | | _ |\\_\\\\____ /| _ |  | _ /',
+    '           .      __   _   _____    _____   _    _     _  __  _    _   __  __      .      ____',
+    '          /\\     | \\ | | |_   _|  / ____| | |  | |   | |/ / | |  | | |  \\/  |      /\\     |  __ \\ ',
+    '         /  \\    |  \\| |   | |   | (___   | |__| |   | \' /  | |  | | | \\  / |     /  \\    | |__) |',
+    '        / /\\ \\   | . ` |   | |    \\___ \\  |  __  |   |  <   | |  | | | |\\/| |    / /\\ \\   |  _  / ',
+    '       / ____ \\  | |\\  |  _| |_   ____) | | |  | |   | . \\  | |__| | | |  | |   / ____ \\  | | \\ \\ ',
+    '      /_/    \\_\\ |_| \\_| |_____| |_____/  |_|  |_|   |_|\\_\\  \\____/  |_|  |_|  /_/    \\_\\ |_|  \\_\\ ',
     '<br>',
-    '---------------------------------------------------------------------------------',
+    '--------------------------------------------------------------------------------------------------------',
     '<br>'
 ];
+
+
+
 
 

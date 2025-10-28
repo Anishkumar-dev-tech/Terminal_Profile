@@ -62,6 +62,10 @@ textarea {
     position: absolute;
 }
 
+#texter {
+    opacity: 0;
+}
+
 b {
     font-weight: bold;
     text-decoration: underline;
@@ -119,78 +123,47 @@ b {
     font-weight: bold;
 }
 
-#command-container {
+#terminal-wrapper {
     display: flex;
     flex-direction: column;
     height: calc(100vh - 60px);
     margin-top: 60px;
-}
-
-#terminal-wrapper {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 0;
-    margin: 0;
+    overflow: hidden;
 }
 
 #terminal {
     position: relative;
     z-index: 1;
-    padding: 20px;
     animation: fadeInUp 0.8s ease forwards;
-    min-height: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#history {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 20px;
 }
 
-#command {
+#input-line {
     cursor: text;
     display: flex;
     align-items: center;
-    background: rgba(0, 255, 65, 0.05);
-    border-top: 2px solid #00ff41;
-    border-bottom: 2px solid #00ff41;
-    padding: 12px 20px;
-    margin: 0;
-    gap: 0;
-}
-
-#liner {
+    gap: 12px;
     line-height: 1.4em;
-    margin: 0;
-    animation: show 0.5s ease forwards;
-    animation-delay: 0.5s;
-    opacity: 0;
     font-weight: 500;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 0;
+    padding-top: 10px;
+    position: relative;
 }
 
-#liner::before {
-    content: "anish@portfolio";
+.prompt-label {
     color: #ff0055;
     font-weight: bold;
-    margin-right: 0;
-}
-
-#liner::after {
-    content: "~$ ";
-    color: #ff0055;
-    font-weight: bold;
-    margin-right: 8px;
+    white-space: nowrap;
 }
 
 #typer {
@@ -202,13 +175,15 @@ b {
     background: rgba(0, 255, 65, 0.08);
     border: 1px solid #00d4ff;
     border-top: none;
-    padding: 8px 20px;
+    padding: 8px 12px;
     font-size: 0.9em;
     color: #00d4ff;
     animation: slideDown 0.3s ease;
     max-height: 150px;
     overflow-y: auto;
-    margin: 0;
+    margin-top: 12px;
+    align-self: flex-start;
+    width: 100%;
 }
 
 #autocomplete.hidden {
@@ -389,19 +364,19 @@ a:focus {
     }
 }
 
-#terminal-wrapper::-webkit-scrollbar {
+#history::-webkit-scrollbar {
     width: 10px;
 }
 
-#terminal-wrapper::-webkit-scrollbar-track {
+#history::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.3);
 }
 
-#terminal-wrapper::-webkit-scrollbar-thumb {
+#history::-webkit-scrollbar-thumb {
     background: #00ff41;
     border-radius: 5px;
 }
 
-#terminal-wrapper::-webkit-scrollbar-thumb:hover {
+#history::-webkit-scrollbar-thumb:hover {
     background: #00d4ff;
 }
