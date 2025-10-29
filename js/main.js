@@ -4,6 +4,7 @@ var textarea = document.getElementById("texter");
 var terminal = document.getElementById("terminal");
 var autocompleteBox = document.getElementById("autocomplete");
 var terminalWrapper = document.getElementById("history");
+var inputLine = document.getElementById("input-line");
 var promptLabel = '<span class="prompt-label">anish@portfolio ~ $</span>';
 
 var git = 0;
@@ -19,6 +20,18 @@ function scrollHistoryToBottom(smooth) {
         terminalWrapper.scrollTo({ top: terminalWrapper.scrollHeight, behavior: "smooth" });
     } else {
         terminalWrapper.scrollTop = terminalWrapper.scrollHeight;
+    }
+}
+
+function scrollToPrompt(smooth) {
+    if (!inputLine || typeof inputLine.scrollIntoView !== "function") {
+        return;
+    }
+    var behavior = smooth ? "smooth" : "auto";
+    try {
+        inputLine.scrollIntoView({ behavior: behavior, block: "end" });
+    } catch (err) {
+        inputLine.scrollIntoView(smooth);
     }
 }
 var autocompleteItems = [];
@@ -55,6 +68,7 @@ function renderCommand(input) {
     }
     command.innerHTML = sanitizedInput + suggestionMarkup;
     scrollHistoryToBottom(false);
+    scrollToPrompt(false);
 }
 
 function setActiveSuggestion(suggestion) {
@@ -298,9 +312,7 @@ function addLine(text, style, time) {
         before.parentNode.insertBefore(next, before);
 
         scrollHistoryToBottom(true);
-        if (next && typeof next.scrollIntoView === "function") {
-            next.scrollIntoView({ behavior: "smooth", block: "end" });
-        }
+        scrollToPrompt(true);
     }, time);
 }
 
