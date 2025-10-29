@@ -126,20 +126,23 @@ b {
 #terminal-wrapper {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 60px);
-    margin-top: 60px;
+    min-height: 100vh;
+    padding: 60px 0 0;
     overflow: hidden;
+    width: 100%;
 }
 
 #terminal {
     position: relative;
     z-index: 1;
     animation: fadeInUp 0.8s ease forwards;
-    height: 100%;
+    flex: 1;
+    min-height: calc(100vh - 60px);
+    width: 100%;
     background: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0;
 }
 
 #history {
@@ -147,17 +150,20 @@ b {
     overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 #input-line {
     cursor: text;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     line-height: 1.4em;
     font-weight: 500;
     padding-top: 10px;
     position: relative;
+    width: 100%;
 }
 
 .prompt-label {
@@ -169,6 +175,11 @@ b {
 #typer {
     color: #00ff41;
     flex: 1;
+    min-height: 1.4em;
+}
+
+.ghost-complete {
+    color: rgba(0, 255, 65, 0.45);
 }
 
 #autocomplete {
@@ -348,35 +359,109 @@ a:focus {
     body {
         padding: 0;
         min-width: auto;
+        font-size: 14px;
+    }
+    
+    #terminal-wrapper {
+        padding: 60px 0 0;
     }
     
     #terminal {
-        padding: 15px;
+        padding: 0;
+        min-height: calc(100vh - 60px);
+        flex: 1;
     }
     
-    #command {
-        padding: 10px 15px;
+    #input-line {
+        gap: 8px;
+        align-items: center;
+    }
+    
+    .prompt-label {
+        width: auto;
+    }
+    
+    #typer {
+        width: 100%;
+        min-height: 1.5em;
     }
     
     #header {
-        padding: 10px 15px;
+        padding: 10px 16px;
         font-size: 0.85em;
+    }
+    
+    #header-info {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+        background-attachment: scroll;
+    }
+    
+    #header {
+        position: sticky;
+        top: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+        padding: calc(12px + env(safe-area-inset-top)) 12px 12px;
+    }
+    
+    #header-info {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    #system-time {
+        align-self: center;
+    }
+    
+    #terminal-wrapper {
+        margin-top: 0;
+        height: auto;
+        min-height: 100vh;
+        padding: calc(12px + env(safe-area-inset-top)) 0 env(safe-area-inset-bottom);
+    }
+    
+    #terminal {
+        padding: 0;
+        min-height: calc(100vh - (12px + env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+        flex: 1;
+    }
+    
+    #input-line {
+        align-items: center;
+    }
+    
+    #history {
+        padding-bottom: 0;
+    }
+    
+    #autocomplete {
+        max-height: 120px;
     }
 }
 
 #history::-webkit-scrollbar {
-    width: 10px;
+    width: 0;
+    height: 0;
 }
 
 #history::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
+    display: none;
 }
 
 #history::-webkit-scrollbar-thumb {
-    background: #00ff41;
-    border-radius: 5px;
+    display: none;
 }
 
 #history::-webkit-scrollbar-thumb:hover {
-    background: #00d4ff;
+    display: none;
 }
