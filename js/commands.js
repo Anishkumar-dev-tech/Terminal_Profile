@@ -20,7 +20,7 @@ var sysinfo = [
 var intro = [
     "<br>",
     "Hey, I'm Anish Kumar A! 👋",
-    "Junior Software Developer from Coimbatore, India",
+    "Junior Software Developer from Bengaluru, India",
     "Experienced in building scalable web applications, cross-platform mobile apps, and serverless backends.",
     "Proficient in Node.js, Python, Flutter, MongoDB, and modern DevOps practices.",
     "Passionate about solving complex problems and creating user-centric digital solutions! 🚀👨‍💻",
@@ -32,7 +32,7 @@ var whoami = [
     "<br>",
     "Anish Kumar A",
     "Junior Software Developer | Node.js | Flutter | Python",
-    "Location: Coimbatore, India",
+    "Location: Bengaluru, India",
     "Email: anishkumarak8686@gmail.com | Phone: 8870208686",
     "<br>"
 ];
@@ -85,10 +85,10 @@ var education = [
     "KGISL Institute of Technology (May 2024)",
     "",
     "<span class=\"command\">Higher Secondary Certificate (HSC)</span>",
-    "KV Institution, Coimbatore (March 2010)",
+    "KV Institution, Bengaluru (March 2010)",
     "",
     "<span class=\"command\">Secondary School Leaving Certificate (SSLC)</span>",
-    "Sree Dharmasasthra Matric Higher Secondary School, Coimbatore (March 2018)",
+    "Sree Dharmasasthra Matric Higher Secondary School, Bengaluru (March 2018)",
     "<br>"
 ];
 
