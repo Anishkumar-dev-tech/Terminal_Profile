@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://www.codewithanish.tech/</loc>
-        <lastmod>2025-10-25</lastmod>
+        <lastmod>2025-10-30T00:00:00+05:30</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://www.codewithanish.tech/img/Anish-IMG.png</image:loc>
+            <image:title>Anish Kumar A Portfolio</image:title>
+            <image:caption>Anish Kumar A portfolio hero image</image:caption>
+            <image:geo_location>Bengaluru, India</image:geo_location>
+        </image:image>
     </url>
 </urlset>

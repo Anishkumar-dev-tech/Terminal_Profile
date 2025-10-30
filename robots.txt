@@ -3,4 +3,11 @@ Allow: /
 Disallow: /admin
 Disallow: /private
 
+User-agent: Googlebot-Image
+Allow: /img/
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://www.codewithanish.tech/sitemap.xml
+Host: www.codewithanish.tech
