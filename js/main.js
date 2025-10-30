@@ -5,7 +5,7 @@ var terminal = document.getElementById("terminal");
 var autocompleteBox = document.getElementById("autocomplete");
 var terminalWrapper = document.getElementById("history");
 var inputLine = document.getElementById("input-line");
-var promptLabel = '<span class="prompt-label">anish@portfolio ~ $</span>';
+var promptLabel = document.getElementById("input-line") ? document.getElementById("input-line").querySelector(".prompt-label").outerHTML : '<span class="prompt-label">anish@portfolio ~ $</span>';
 
 var git = 0;
 var pw = false;
@@ -264,7 +264,11 @@ function commander(cmd) {
             break;
         case "clear":
             setTimeout(function() {
-                terminal.innerHTML = '<a id="before"></a>';
+                if (terminalWrapper) {
+                    terminalWrapper.innerHTML = '<a id="before"></a>';
+                } else {
+                    terminal.innerHTML = '<a id="before"></a>';
+                }
                 before = document.getElementById("before");
             }, 1);
             break;

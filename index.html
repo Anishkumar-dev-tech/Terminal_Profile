@@ -183,25 +183,33 @@
     </script>
 </head>
 <body>
-    <div id="header">
-        <div id="header-info">
-            <span>🏴 Welcome to my terminal!</span>
-            <span>|</span>
-            <span>Anish Kumar A</span>
-        </div>
-        <div id="system-time">
-            <span id="time-display">00:00:00</span>
-        </div>
-    </div>
     <div id="command-container">
         <div id="terminal-wrapper">
+            <div class="terminal-bar">
+                <div class="terminal-bar-left">
+                    <span class="dot dot-close"></span>
+                    <span class="dot dot-minimize"></span>
+                    <span class="dot dot-maximize"></span>
+                </div>
+                <div class="terminal-bar-center">
+                    <span class="terminal-welcome">🏴 Welcome to my terminal!</span>
+                    <span class="terminal-divider">|</span>
+                    <span class="terminal-user">Anish Kumar A</span>
+                </div>
+                <div class="terminal-bar-right">
+                    <span id="time-display" class="terminal-time">00:00:00</span>
+                </div>
+            </div>
             <div id="terminal">
-                <a id="before"></a>
+                <div id="history">
+                    <a id="before"></a>
+                </div>
             </div>
         </div>
         <div id="command" onclick="$('texter').focus();">
             <textarea type="text" id="texter" onkeyup="typeIt(this, event)" onkeydown="typeIt(this, event); moveIt(this.value.length, event)" onkeypress="typeIt(this, event);" autofocus></textarea>
-            <div id="liner">
+            <div id="input-line">
+                <span class="prompt-label">anish@portfolio ~ $</span>
                 <span id="typer"></span><b class="cursor" id="cursor">█</b>
             </div>
             <div id="autocomplete" class="hidden"></div>
