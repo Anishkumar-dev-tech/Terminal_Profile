@@ -1,23 +1,98 @@
 var before = document.getElementById("before");
-var liner = document.getElementById("liner");
 var command = document.getElementById("typer");
 var textarea = document.getElementById("texter");
 var terminal = document.getElementById("terminal");
 var autocompleteBox = document.getElementById("autocomplete");
-var terminalWrapper = document.getElementById("terminal-wrapper");
+var terminalWrapper = document.getElementById("history");
+var inputLine = document.getElementById("input-line");
+var promptLabel = '<span class="prompt-label">anish@portfolio ~ $</span>';
 
 var git = 0;
 var pw = false;
 let pwd = false;
 var commands = [];
+
+function scrollHistoryToBottom(smooth) {
+    if (!terminalWrapper) {
+        return;
+    }
+    if (smooth) {
+        terminalWrapper.scrollTo({ top: terminalWrapper.scrollHeight, behavior: "smooth" });
+    } else {
+        terminalWrapper.scrollTop = terminalWrapper.scrollHeight;
+    }
+}
+
+function scrollToPrompt(smooth) {
+    if (!inputLine || typeof inputLine.scrollIntoView !== "function") {
+        return;
+    }
+    var behavior = smooth ? "smooth" : "auto";
+    try {
+        inputLine.scrollIntoView({ behavior: behavior, block: "end" });
+    } catch (err) {
+        inputLine.scrollIntoView(smooth);
+    }
+}
 var autocompleteItems = [];
 var selectedAutoCompleteIndex = -1;
+var activeSuggestion = "";
 
 var allCommands = [
     "help", "intro", "whoami", "skills", "experience", 
     "education", "projects", "social", "history", "email", 
     "clear", "banner", "linkedin", "github", "sysinfo"
 ];
+
+function sanitizeCommand(text) {
+    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function formatCommand(input) {
+    return promptLabel + ' <span class="command-input">' + sanitizeCommand(input) + "</span>";
+}
+
+function isMobileDevice() {
+    return /android|iphone|ipad|ipod|windows phone|mobile/i.test(navigator.userAgent || "");
+}
+
+function renderCommand(input) {
+    var value = input != null ? input : "";
+    var sanitizedInput = sanitizeCommand(value);
+    var suggestionMarkup = "";
+    if (value && activeSuggestion && activeSuggestion.startsWith(value.toLowerCase())) {
+        var remainder = activeSuggestion.slice(value.length);
+        if (remainder.length > 0) {
+            suggestionMarkup = '<span class="ghost-complete">' + sanitizeCommand(remainder) + "</span>";
+        }
+    }
+    command.innerHTML = sanitizedInput + suggestionMarkup;
+    scrollHistoryToBottom(false);
+    scrollToPrompt(false);
+}
+
+function setActiveSuggestion(suggestion) {
+    activeSuggestion = suggestion || "";
+    renderCommand(textarea.value);
+}
+
+function applySuggestion(appendSpace) {
+    if (!activeSuggestion) {
+        return false;
+    }
+    var currentValue = textarea.value;
+    if (!activeSuggestion.startsWith(currentValue.toLowerCase())) {
+        return false;
+    }
+    var completion = activeSuggestion;
+    if (appendSpace) {
+        completion += " ";
+    }
+    textarea.value = completion;
+    renderCommand(textarea.value);
+    hideAutocomplete();
+    return true;
+}
 
 setTimeout(function() {
     loopLines(banner, "", 80);
@@ -29,7 +104,7 @@ window.addEventListener("keyup", enterKey);
 window.addEventListener("keydown", handleAutocomplete);
 
 textarea.value = "";
-command.innerHTML = textarea.value;
+renderCommand(textarea.value);
 
 function startSystemTime() {
     function updateTime() {
@@ -49,68 +124,41 @@ function showAutocomplete(input) {
         return;
     }
 
-    autocompleteItems = allCommands.filter(cmd => cmd.startsWith(input.toLowerCase()));
-    
-    if (autocompleteItems.length === 0) {
-        hideAutocomplete();
-        return;
-    }
+    var lower = input.toLowerCase();
+    var match = allCommands.find(cmd => cmd.startsWith(lower));
 
-    autocompleteBox.innerHTML = "";
-    autocompleteItems.forEach((item, index) => {
-        var div = document.createElement("div");
-        div.className = "autocomplete-item";
-        div.textContent = item;
-        div.onclick = function() {
-            textarea.value = item;
-            command.innerHTML = item;
-            hideAutocomplete();
-        };
-        autocompleteBox.appendChild(div);
-    });
-    
-    autocompleteBox.classList.remove("hidden");
-    selectedAutoCompleteIndex = -1;
+    if (match) {
+        autocompleteItems = [match];
+        selectedAutoCompleteIndex = 0;
+        setActiveSuggestion(match);
+        autocompleteBox.classList.add("hidden");
+        autocompleteBox.innerHTML = "";
+    } else {
+        hideAutocomplete();
+    }
 }
 
 function hideAutocomplete() {
+    setActiveSuggestion("");
     autocompleteBox.classList.add("hidden");
     autocompleteBox.innerHTML = "";
+    autocompleteItems = [];
     selectedAutoCompleteIndex = -1;
 }
 
 function handleAutocomplete(e) {
-    if (autocompleteBox.classList.contains("hidden")) {
-        return;
-    }
+    var key = e.keyCode || e.which;
 
-    if (e.keyCode === 40) {
+    if (key === 9) {
         e.preventDefault();
-        selectedAutoCompleteIndex = (selectedAutoCompleteIndex + 1) % autocompleteItems.length;
-        updateAutoCompleteSelection();
-    } else if (e.keyCode === 38) {
-        e.preventDefault();
-        selectedAutoCompleteIndex = (selectedAutoCompleteIndex - 1 + autocompleteItems.length) % autocompleteItems.length;
-        updateAutoCompleteSelection();
-    } else if (e.keyCode === 9) {
-        e.preventDefault();
-        if (selectedAutoCompleteIndex >= 0) {
-            textarea.value = autocompleteItems[selectedAutoCompleteIndex];
-            command.innerHTML = textarea.value;
-            hideAutocomplete();
+        if (!applySuggestion(false)) {
+            showAutocomplete(textarea.value);
+        }
+    } else if (key === 32) {
+        if (activeSuggestion && applySuggestion(true)) {
+            e.preventDefault();
         }
     }
-}
-
-function updateAutoCompleteSelection() {
-    var items = document.querySelectorAll(".autocomplete-item");
-    items.forEach((item, index) => {
-        if (index === selectedAutoCompleteIndex) {
-            item.classList.add("selected");
-        } else {
-            item.classList.remove("selected");
-        }
-    });
 }
 
 function enterKey(e) {
@@ -126,21 +174,34 @@ function enterKey(e) {
         return;
     }
     
+    if (e.keyCode == 32 && activeSuggestion) {
+        if (applySuggestion(true)) {
+            return;
+        }
+    }
+    
     if (e.keyCode == 13) {
         hideAutocomplete();
-        commands.push(currentInput);
+        var trimmedInput = currentInput.trim();
+        if (trimmedInput.length === 0) {
+            textarea.value = "";
+            renderCommand(textarea.value);
+            return;
+        }
+        var displayCommand = formatCommand(trimmedInput);
+        commands.push(trimmedInput);
         git = commands.length;
-        addLine(currentInput, "no-animation", 0);
-        commander(currentInput.toLowerCase());
-        command.innerHTML = "";
+        addLine(displayCommand, "no-animation", 0);
+        commander(trimmedInput.toLowerCase());
         textarea.value = "";
+        renderCommand(textarea.value);
         return;
     }
     
     if (e.keyCode == 38 && git != 0) {
         git -= 1;
         textarea.value = commands[git];
-        command.innerHTML = textarea.value;
+        renderCommand(textarea.value);
         hideAutocomplete();
         return;
     }
@@ -152,16 +213,18 @@ function enterKey(e) {
         } else {
             textarea.value = commands[git];
         }
-        command.innerHTML = textarea.value;
+        renderCommand(textarea.value);
         hideAutocomplete();
         return;
     }
 
-    if (currentInput.length > 0 && e.keyCode !== 8) {
+    if (currentInput.length > 0) {
         showAutocomplete(currentInput);
     } else {
         hideAutocomplete();
     }
+
+    setActiveSuggestion(activeSuggestion);
 }
 
 function commander(cmd) {
@@ -248,7 +311,8 @@ function addLine(text, style, time) {
 
         before.parentNode.insertBefore(next, before);
 
-        terminalWrapper.scrollTop = terminalWrapper.scrollHeight;
+        scrollHistoryToBottom(true);
+        scrollToPrompt(true);
     }, time);
 }
 

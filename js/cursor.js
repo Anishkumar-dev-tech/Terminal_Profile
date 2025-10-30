@@ -16,11 +16,17 @@ function nl2br(txt) {
 
 function typeIt(from, e) {
     e = e || window.event;
-    var w = $("typer");
-    var tw = from.value;
-    if (!pw) {
-        w.innerHTML = nl2br(tw);
+    if (pw) {
+        return;
     }
+    setTimeout(function() {
+        var current = (from.value || "").replace(/\n/g, "");
+        if (current !== from.value) {
+            from.value = current;
+        }
+        textarea.value = current;
+        renderCommand(current);
+    }, 0);
 }
 
 function moveIt(count, e) {
