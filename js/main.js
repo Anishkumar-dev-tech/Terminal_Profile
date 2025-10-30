@@ -39,9 +39,9 @@ var selectedAutoCompleteIndex = -1;
 var activeSuggestion = "";
 
 var allCommands = [
-    "help", "intro", "whoami", "skills", "experience", 
-    "education", "projects", "social", "history", "email", 
-    "clear", "banner", "linkedin", "github", "sysinfo"
+    "help", "intro", "whoami", "skills", "experience",
+    "education", "projects", "social", "history", "email",
+    "clear", "banner", "linkedin", "github", "sysinfo", "phone", "cv"
 ];
 
 function sanitizeCommand(text) {
@@ -94,7 +94,7 @@ function applySuggestion(appendSpace) {
     return true;
 }
 
-setTimeout(function() {
+setTimeout(function () {
     loopLines(banner, "", 80);
     textarea.focus();
     startSystemTime();
@@ -109,10 +109,15 @@ renderCommand(textarea.value);
 function startSystemTime() {
     function updateTime() {
         var now = new Date();
-        var hours = String(now.getHours()).padStart(2, '0');
-        var minutes = String(now.getMinutes()).padStart(2, '0');
-        var seconds = String(now.getSeconds()).padStart(2, '0');
-        document.getElementById("time-display").textContent = hours + ":" + minutes + ":" + seconds;
+        var formatted = now.toLocaleTimeString('en-IN', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+            timeZone: 'Asia/Kolkata'
+        });
+        var output = formatted.replace(' am', ' AM').replace(' pm', ' PM');
+        document.getElementById("time-display").textContent = output + ' IST';
     }
     updateTime();
     setInterval(updateTime, 1000);
@@ -163,23 +168,23 @@ function handleAutocomplete(e) {
 
 function enterKey(e) {
     var currentInput = textarea.value;
-    
+
     if (e.keyCode == 181) {
         document.location.reload(true);
     }
-    
+
     if (e.keyCode == 9) {
         e.preventDefault();
         showAutocomplete(currentInput);
         return;
     }
-    
+
     if (e.keyCode == 32 && activeSuggestion) {
         if (applySuggestion(true)) {
             return;
         }
     }
-    
+
     if (e.keyCode == 13) {
         hideAutocomplete();
         var trimmedInput = currentInput.trim();
@@ -197,7 +202,7 @@ function enterKey(e) {
         renderCommand(textarea.value);
         return;
     }
-    
+
     if (e.keyCode == 38 && git != 0) {
         git -= 1;
         textarea.value = commands[git];
@@ -205,7 +210,7 @@ function enterKey(e) {
         hideAutocomplete();
         return;
     }
-    
+
     if (e.keyCode == 40 && git != commands.length) {
         git += 1;
         if (commands[git] === undefined) {
@@ -259,11 +264,11 @@ function commander(cmd) {
             addLine("<br>", "command", 80 * commands.length + 50);
             break;
         case "email":
-            addLine('Opening mailto:<a href="' + email + '">anishkumarak8686@gmail.com</a>...', "color2", 80);
+            addLine('Opening mailto:<a href="' + email + '">anishkumar.dev.tech@gmail.com</a>...', "color2", 80);
             newTab(email);
             break;
         case "clear":
-            setTimeout(function() {
+            setTimeout(function () {
                 if (terminalWrapper) {
                     terminalWrapper.innerHTML = '<a id="before"></a>';
                 } else {
@@ -286,6 +291,14 @@ function commander(cmd) {
         case "sysinfo":
             loopLines(sysinfo, "color2 margin", 80);
             break;
+        case "phone":
+            addLine("Calling +91 8870208686...", "color2", 0);
+            newTab(phone);
+            break;
+        case "cv":
+            addLine("Opening CV...", "color2", 0);
+            newTab(cv);
+            break;
         default:
             addLine("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
             break;
@@ -293,7 +306,7 @@ function commander(cmd) {
 }
 
 function newTab(link) {
-    setTimeout(function() {
+    setTimeout(function () {
         window.open(link, "_blank");
     }, 500);
 }
@@ -308,7 +321,7 @@ function addLine(text, style, time) {
             t += text.charAt(i);
         }
     }
-    setTimeout(function() {
+    setTimeout(function () {
         var next = document.createElement("p");
         next.innerHTML = t;
         next.className = style;
@@ -321,7 +334,7 @@ function addLine(text, style, time) {
 }
 
 function loopLines(name, style, time) {
-    name.forEach(function(item, index) {
+    name.forEach(function (item, index) {
         addLine(item, style, index * time);
     });
 }

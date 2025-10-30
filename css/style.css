@@ -131,24 +131,30 @@ b {
 }
 
 .terminal-bar-left {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
+    flex: 0 0 auto;
 }
 
 .terminal-bar-center {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     color: #9fbad6;
     font-size: 0.95em;
     letter-spacing: 0.02em;
+    margin-left: 12px;
+    margin-right: auto;
+    text-align: left;
 }
 
 .terminal-bar-right {
-    margin-left: auto;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+    margin-left: auto;
 }
 
 .terminal-divider {
@@ -239,12 +245,6 @@ b {
     border-radius: 8px;
     border: 1px solid transparent;
     background: #050c13;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
-}
-
-#command:focus-within #input-line {
-    border-color: #15c46b;
-    background-color: #071118;
 }
 
 .prompt-label {
@@ -453,20 +453,26 @@ a:focus {
     }
 
     .terminal-bar {
-        padding: 16px;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        padding: 16px 14px;
         gap: 12px;
     }
 
+    .terminal-bar-left {
+        justify-self: start;
+        margin: 0;
+    }
+
     .terminal-bar-center {
-        width: 100%;
-        justify-content: center;
+        justify-self: center;
         text-align: center;
+        margin: 0;
     }
 
     .terminal-bar-right {
-        width: 100%;
-        justify-content: center;
+        justify-self: end;
+        margin-left: 0;
     }
 
     #terminal {
@@ -500,23 +506,25 @@ a:focus {
     }
 
     .terminal-bar {
+        display: grid;
+        grid-template-columns: max-content 1fr max-content;
         padding: 14px 12px;
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
         gap: 10px;
     }
 
-    .terminal-bar-left {
-        justify-content: center;
+    .terminal-bar-left,
+    .terminal-bar-center,
+    .terminal-bar-right {
+        justify-self: center;
+        margin: 0;
     }
 
-    .terminal-bar-center {
-        justify-content: center;
+    .terminal-bar-left {
+        justify-self: start;
     }
 
     .terminal-bar-right {
-        justify-content: center;
+        justify-self: end;
     }
 
     #terminal {
