@@ -155,9 +155,9 @@ var help = [
 ];
 
 var banner = [
-    '<span class="index">Welcome to Anish Kumar A\'s Portfolio</span>',
-    '<span class="color2">Junior Software Developer | Node.js | Flutter | Python</span>',
-    '<span class="color2">Type</span> <span class="command">\'help\'</span><span class="color2"> to see available commands or \'intro\' to learn more about me.</span>',
+    '<span class="index banner-line">Welcome to Anish Kumar A\'s Portfolio</span>',
+    '<span class="color2 banner-line">Junior Software Developer | Node.js | Flutter | Python</span>',
+    '<span class="color2 banner-line">Type</span> <span class="command banner-line">\'help\'</span><span class="color2 banner-line"> to see available commands or \'intro\' to learn more about me.</span>',
     '',
     '---------------------------------------------------------------------------------------------------------',
     '<br>',

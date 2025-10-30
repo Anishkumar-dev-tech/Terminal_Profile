@@ -387,6 +387,12 @@ p:hover .margin::before {
     color: #00ff41;
 }
 
+.banner-line {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+}
+
 .command {
     color: #00d4ff;
     font-weight: bold;
@@ -507,24 +513,33 @@ a:focus {
 
     .terminal-bar {
         display: grid;
-        grid-template-columns: max-content 1fr max-content;
+        grid-template-columns: max-content 1fr;
+        grid-template-areas:
+            "dots time"
+            "center center";
         padding: 14px 12px;
-        gap: 10px;
-    }
-
-    .terminal-bar-left,
-    .terminal-bar-center,
-    .terminal-bar-right {
-        justify-self: center;
-        margin: 0;
+        gap: 8px;
+        align-items: center;
     }
 
     .terminal-bar-left {
+        grid-area: dots;
         justify-self: start;
+        margin: 0;
+    }
+
+    .terminal-bar-center {
+        grid-area: center;
+        justify-self: center;
+        text-align: center;
+        margin: 0;
+        padding: 0 4px;
     }
 
     .terminal-bar-right {
+        grid-area: time;
         justify-self: end;
+        margin: 0;
     }
 
     #terminal {
@@ -538,6 +553,29 @@ a:focus {
     #input-line {
         padding: 12px;
         gap: 8px;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .prompt-label {
+        width: auto;
+        margin-bottom: 0;
+        font-size: 0.85em;
+        flex: 0 0 auto;
+    }
+
+    #typer {
+        flex: 1 1 auto;
+        min-width: 0;
+        word-break: break-word;
+        white-space: normal;
+        font-size: 0.9em;
+    }
+
+    .cursor {
+        margin-top: 0;
+        transform: scale(0.85);
     }
 
     #history {
@@ -546,6 +584,10 @@ a:focus {
 
     #autocomplete {
         max-height: 140px;
+    }
+
+    .banner-line {
+        font-size: 0.95em;
     }
 }
 
