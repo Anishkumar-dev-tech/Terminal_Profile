@@ -1,5 +1,5 @@
 var linkedin = "https://www.linkedin.com/in/anish-kumar-a/";
-var github = "https://github.com/anishkumarak";
+var github = "https://github.com/anishkumar-0502";
 var email = 'mailto:anishkumar.dev.tech@gmail.com';
 var phone = 'tel:+918870208686';
 var cv = './ANISHKUMAR_CV.pdf';
